@@ -1,5 +1,5 @@
+import { UI } from './common/components/UI';
+
 export const App = () => {
-  return (
-     <div>Yo!</div>
-  );
+  return <UI/>;
 };

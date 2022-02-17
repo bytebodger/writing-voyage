@@ -1,3 +1,6 @@
 export const the = Object.freeze({
-   color: {},
+   color: {
+      black: '#000000',
+      white: '#cccccc',
+   },
 });

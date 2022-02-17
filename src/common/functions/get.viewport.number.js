@@ -1,5 +1,5 @@
 import { allow } from '@toolz/allow-react';
-import { viewportSizes } from '../arrays/viewportSizes';
+import { viewportSizes } from '../arrays/viewport.sizes';
 
 export const getViewportNumber = (size = '') => {
    allow.oneOf(size, viewportSizes);
