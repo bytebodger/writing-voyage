@@ -39,25 +39,29 @@ export const TopNav = props => {
       };
    });
 
-   const isMobile = () => viewport.size === 'xs' || viewport.size === 'sm' || viewport.size === 'md';
+   const isMobile = ['xs', 'sm', 'md'].includes(viewport.size);
 
    const linkStyle = {
       color: the.color.white,
-      fontSize: isMobile() ? css3.fontSize.small : css3.fontSize.inherit,
+      fontSize: isMobile ? css3.fontSize.small : css3.fontSize.inherit,
       marginRight: 16,
       textDecoration: css3.textDecoration.none,
    };
    const mainStyle = {
       color: the.color.white,
-      fontSize: isMobile() ? css3.fontSize.small : css3.fontSize.inherit,
-      height: isMobile() ? 16 : 25,
+      fontSize: isMobile ? css3.fontSize.small : css3.fontSize.inherit,
+      height: isMobile ? 16 : 25,
       marginLeft: 8,
-      width: isMobile() ? 16 : 25,
+      width: isMobile ? 16 : 25,
    };
    const mobileLinkStyle = {
       color: the.color.black,
       textAlign: css3.textAlign.center,
       textDecoration: css3.textDecoration.none,
+      width: '100%',
+   };
+   const mobileListItemStyle = {
+      fontSize: css3.fontSize.xLarge,
       width: '100%',
    };
 
@@ -135,6 +139,76 @@ export const TopNav = props => {
                   CONTACT
                </Link>
             </ListItem>
+            <ListItem button={true}>
+               <a
+                  href={'https://dev.to/bytebodger'}
+                  rel={'noreferrer'}
+                  style={mobileListItemStyle}
+                  target={'_blank'}
+                  title={'Dev.to'}
+               >
+                  <FontAwesomeIcon
+                     icon={devTo}
+                     style={mobileLinkStyle}
+                  />
+               </a>
+            </ListItem>
+            <ListItem button={true}>
+               <a
+                  href={'https://www.facebook.com/jaxcreator'}
+                  rel={'noreferrer'}
+                  style={mobileListItemStyle}
+                  target={'_blank'}
+                  title={'Facebook'}
+               >
+                  <FontAwesomeIcon
+                     icon={facebook}
+                     style={mobileLinkStyle}
+                  />
+               </a>
+            </ListItem>
+            <ListItem button={true}>
+               <a
+                  href={'https://twitter.com/WritingVoyage'}
+                  rel={'noreferrer'}
+                  style={mobileListItemStyle}
+                  target={'_blank'}
+                  title={'Twitter'}
+               >
+                  <FontAwesomeIcon
+                     icon={twitter}
+                     style={mobileLinkStyle}
+                  />
+               </a>
+            </ListItem>
+            <ListItem button={true}>
+               <a
+                  href={'https://www.instagram.com/bytebodger/'}
+                  rel={'noreferrer'}
+                  style={mobileListItemStyle}
+                  target={'_blank'}
+                  title={'Instagram'}
+               >
+                  <FontAwesomeIcon
+                     icon={instagram}
+                     style={mobileLinkStyle}
+                  />
+               </a>
+            </ListItem>
+            <ListItem button={true}>
+               <a
+                  href={'https://www.youtube.com/channel/UCHNDtVFC4WQTcp_awD9c1Ag'}
+                  rel={'noreferrer'}
+                  style={mobileListItemStyle}
+                  target={'_blank'}
+                  title={'YouTube'}
+               >
+                  <FontAwesomeIcon
+                     icon={youtube}
+                     style={mobileLinkStyle}
+                  />
+               </a>
+            </ListItem>
          </List>
       </Dialog>
       <Container style={{minWidth: 350}}>
@@ -147,7 +221,7 @@ export const TopNav = props => {
                   <Link
                      style={{
                         color: the.color.white,
-                        fontSize: isMobile() ? css3.fontSize.small : css3.fontSize.inherit,
+                        fontSize: isMobile ? css3.fontSize.small : css3.fontSize.inherit,
                         textDecoration: css3.textDecoration.none,
                      }}
                      to={'/home'}
