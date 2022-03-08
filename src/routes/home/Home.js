@@ -1,7 +1,14 @@
 import adamThePoetJpg from '../../common/images/adam-the-poet.jpg';
+import aDuskForeverWaning from '../../common/images/a-dusk-forever-waning.png';
 import cognitiveDissonance from '../../common/images/cognitive-dissonance.png';
+import elizabethTaylor from '../../common/images/elizabeth-taylor.jpg';
+import excilior from '../../common/images/excilior.png';
+import ghandi from '../../common/images/ghandi.jpg';
 import hilltop from '../../common/images/hilltop.jpg';
 import okSierra from '../../common/images/ok-sierra.jpg';
+import popeBenedict from '../../common/images/pope-benedict.jpg';
+import programming from '../../common/images/programming.png';
+import tennesseeWilliams from '../../common/images/tennessee-williams.jpg';
 import { Container } from '@mui/material';
 import { css3 } from '@toolz/css3/src/css3';
 import { Link } from 'react-router-dom';
@@ -37,6 +44,39 @@ export const Home = () => {
    const linkStyle = {
       color: the.color.white,
       textDecoration: css3.textDecoration.none,
+   };
+   const quoteCellStyle = {
+      display: css3.dislay.tableCell,
+      paddingBottom: 20,
+      verticalAlign: css3.verticalAlign.bottom,
+   };
+   const quoteImageStyle = {
+      ...bodyColumnStyle,
+      marginTop: isMobile ? 0 : 20,
+      padding: isMobile ? 10 : 30,
+      textAlign: css3.textAlign.right,
+   };
+   const quoteNameStyle = {
+      color: the.color.black,
+      fontFamily: 'Open Sans',
+      fontSize: isMobile ? 12 : 20,
+      fontWeight: css3.fontWeight._700,
+      marginTop: isMobile ? 10 : 20,
+   };
+   const quoteSourceStyle = {
+      color: the.color.grey,
+      fontFamily: 'Open Sans',
+      fontSize: isMobile ? 10 : 16,
+   };
+   const quoteStyle = {
+      color: the.color.grey,
+      fontFamily: 'Open Sans',
+      fontSize: isMobile ? 12 : 20,
+      fontStyle: css3.fontStyle.italic,
+   };
+   const quoteTableStyle = {
+      display: css3.dislay.table,
+      height: '100%',
    };
    const roundImageStyle = {
       borderBottomLeftRadius: '50%',
@@ -79,6 +119,30 @@ export const Home = () => {
                   <div style={divLinkStyle}>
                      <Link
                         style={linkStyle}
+                        to={'/worldbuilding'}
+                     >
+                        Worldbuilder
+                     </Link>
+                  </div>
+                  <div style={divLinkStyle}>
+                     <Link
+                        style={linkStyle}
+                        to={'/programs'}
+                     >
+                        Programmer
+                     </Link>
+                  </div>
+                  <div style={divLinkStyle}>
+                     <Link
+                        style={linkStyle}
+                        to={'/plays'}
+                     >
+                        Playwright
+                     </Link>
+                  </div>
+                  <div style={divLinkStyle}>
+                     <Link
+                        style={linkStyle}
                         to={'/novels'}
                      >
                         Novelist
@@ -95,25 +159,9 @@ export const Home = () => {
                   <div style={divLinkStyle}>
                      <Link
                         style={linkStyle}
-                        to={'/plays'}
-                     >
-                        Playwright
-                     </Link>
-                  </div>
-                  <div style={divLinkStyle}>
-                     <Link
-                        style={linkStyle}
                         to={'/poems'}
                      >
                         Poet
-                     </Link>
-                  </div>
-                  <div style={divLinkStyle}>
-                     <Link
-                        style={linkStyle}
-                        to={'/programs'}
-                     >
-                        Programmer
                      </Link>
                   </div>
                </Column>
@@ -173,22 +221,6 @@ export const Home = () => {
                fontSize: 14,
                marginTop: 10,
             }}>
-               A new science fiction novel in his existing world of{` `}
-               <a
-                  href={'https://www.worldanvil.com/w/excilior'}
-                  rel={'noreferrer'}
-                  target={'_blank'}
-               >
-                  Torrenth
-               </a>
-            </Column>
-         </Row>
-         <Row>
-            <Column style={{
-               ...bodyColumnStyle,
-               color: the.color.black,
-               fontSize: 14,
-            }}>
                A web-based serial in an entirely different science-fiction universe
             </Column>
          </Row>
@@ -198,7 +230,7 @@ export const Home = () => {
                color: the.color.black,
                fontSize: 14,
             }}>
-               A modern absurdist play that is an ode to <i>Rosencrantz and Guildenstern Are Dead</i>
+               An absurdist play ode to <i>Rosencrantz and Guildenstern Are Dead</i>
             </Column>
          </Row>
          <Row>
@@ -207,7 +239,14 @@ export const Home = () => {
                color: the.color.black,
                fontSize: 14,
             }}>
-               A revised collection of poetry
+               A new science fiction novel based in{` `}
+               <a
+                  href={'https://www.worldanvil.com/w/excilior'}
+                  rel={'noreferrer'}
+                  target={'_blank'}
+               >
+                  Excilior
+               </a>
             </Column>
          </Row>
          <Row>
@@ -217,6 +256,15 @@ export const Home = () => {
                fontSize: 14,
             }}>
                A new painting of a lion's head
+            </Column>
+         </Row>
+         <Row>
+            <Column style={{
+               ...bodyColumnStyle,
+               color: the.color.black,
+               fontSize: 14,
+            }}>
+               A revised collection of poetry
             </Column>
          </Row>
          <Row>
@@ -346,32 +394,250 @@ export const Home = () => {
             >
                <div>
                   <img
-                     alt={'Plays'}
-                     src={okSierra}
+                     alt={'Programs'}
+                     src={programming}
                      style={roundImageStyle}
                   />
                </div>
                <div>
                   <Link
                      style={bodyHeadingLinkStyle}
-                     to={'/plays'}
+                     to={'/programs'}
                   >
-                     Plays
+                     Programs
                   </Link>
                   <Link
                      style={{
                         color: the.color.grey,
                         textDecoration: css3.textDecoration.none,
                      }}
-                     to={'/plays'}
+                     to={'/programs'}
                   >
                      <div style={{
                         ...bodyColumnStyle,
                         color: the.color.grey,
                      }}>
-                        Four (and counting) full-length plays drawing heavily from science fiction and absurdism
+                        A plethora of web-based business applications spanning a wide variety of technologies - but specializing in Javascript/React
                      </div>
                   </Link>
+               </div>
+            </Column>
+            <Column
+               xs={12} sm={12} md={12} lg={4} xl={4}
+               style={{
+                  ...bodyColumnStyle,
+                  marginTop: isMobile ? 0 : 20,
+                  padding: 30,
+               }}
+            >
+               <div>
+                  <img
+                     alt={'Novels'}
+                     src={aDuskForeverWaning}
+                     style={roundImageStyle}
+                  />
+               </div>
+               <div>
+                  <Link
+                     style={bodyHeadingLinkStyle}
+                     to={'/novels'}
+                  >
+                     Novels
+                  </Link>
+                  <Link
+                     style={{
+                        color: the.color.grey,
+                        textDecoration: css3.textDecoration.none,
+                     }}
+                     to={'/novels'}
+                  >
+                     <div style={{
+                        ...bodyColumnStyle,
+                        color: the.color.grey,
+                     }}>
+                        One completed novel, another in progress, and a novel-length web-based serial
+                     </div>
+                  </Link>
+               </div>
+            </Column>
+            <Column
+               xs={12} sm={12} md={12} lg={4} xl={4}
+               style={{
+                  ...bodyColumnStyle,
+                  marginTop: isMobile ? 0 : 20,
+                  padding: 30,
+               }}
+            >
+               <div>
+                  <img
+                     alt={'Worldbuilding'}
+                     src={excilior}
+                     style={roundImageStyle}
+                  />
+               </div>
+               <div>
+                  <Link
+                     style={bodyHeadingLinkStyle}
+                     to={'/worldbuilding'}
+                  >
+                     Worldbuilding
+                  </Link>
+                  <Link
+                     style={{
+                        color: the.color.grey,
+                        textDecoration: css3.textDecoration.none,
+                     }}
+                     to={'/worldbuilding'}
+                  >
+                     <div style={{
+                        ...bodyColumnStyle,
+                        color: the.color.grey,
+                     }}>
+                        Nearly half a million words of pure worldbuilding, including detailed maps and full world history
+                     </div>
+                  </Link>
+               </div>
+            </Column>
+         </Row>
+         <Row>
+            <Column
+               xs={12}
+               style={{
+                  fontFamily: 'Montserrat',
+                  fontSize: isMobile ? 20 : 36,
+                  fontWeight: css3.fontWeight._700,
+                  marginTop: isMobile ? 0 : 50,
+                  textAlign: css3.textAlign.center,
+               }}
+            >
+               What Others Are Saying About Adam Nathaniel Davis
+            </Column>
+         </Row>
+         <Row>
+            <Column
+               xs={5}
+               style={quoteImageStyle}
+            >
+               <div>
+                  <img
+                     alt={'Worldbuilding'}
+                     src={ghandi}
+                     style={roundImageStyle}
+                  />
+               </div>
+            </Column>
+            <Column
+               xs={7}
+               style={{padding: isMobile ? 20 : 30}}
+            >
+               <div style={quoteTableStyle}>
+                  <div style={quoteCellStyle}>
+                     <div style={quoteStyle}>
+                        "Adam's so talented that it just makes me want to punch someone in their big doughy face."
+                     </div>
+                     <div style={quoteNameStyle}>
+                        Mahatma Ghandi
+                     </div>
+                     <div style={quoteSourceStyle}>
+                        via Fox News
+                     </div>
+                  </div>
+               </div>
+            </Column>
+         </Row>
+         <Row>
+            <Column
+               xs={5}
+               style={quoteImageStyle}
+            >
+               <div>
+                  <img
+                     alt={'Worldbuilding'}
+                     src={tennesseeWilliams}
+                     style={roundImageStyle}
+                  />
+               </div>
+            </Column>
+            <Column
+               xs={7}
+               style={{padding: isMobile ? 20 : 30}}
+            >
+               <div style={quoteTableStyle}>
+                  <div style={quoteCellStyle}>
+                     <div style={quoteStyle}>
+                        "I'm not ashamed to admit that most of my best ideas were stolen from Adam."
+                     </div>
+                     <div style={quoteNameStyle}>
+                        Tennessee Williams
+                     </div>
+                     <div style={quoteSourceStyle}>
+                        via Reddit
+                     </div>
+                  </div>
+               </div>
+            </Column>
+         </Row>
+         <Row>
+            <Column
+               xs={5}
+               style={quoteImageStyle}
+            >
+               <div>
+                  <img
+                     alt={'Worldbuilding'}
+                     src={popeBenedict}
+                     style={roundImageStyle}
+                  />
+               </div>
+            </Column>
+            <Column
+               xs={7}
+               style={{padding: isMobile ? 20 : 30}}
+            >
+               <div style={quoteTableStyle}>
+                  <div style={quoteCellStyle}>
+                     <div style={quoteStyle}>
+                        "I'd sell my soul if I could learn to write even half as well as Adam."
+                     </div>
+                     <div style={quoteNameStyle}>
+                        Pope Benedict XVI
+                     </div>
+                     <div style={quoteSourceStyle}>
+                        via Snapchat
+                     </div>
+                  </div>
+               </div>
+            </Column>
+         </Row>
+         <Row style={{marginBottom: 100}}>
+            <Column
+               xs={5}
+               style={quoteImageStyle}
+            >
+               <div>
+                  <img
+                     alt={'Worldbuilding'}
+                     src={elizabethTaylor}
+                     style={roundImageStyle}
+                  />
+               </div>
+            </Column>
+            <Column
+               xs={7}
+               style={{padding: isMobile ? 20 : 30}}
+            >
+               <div style={quoteTableStyle}>
+                  <div style={quoteCellStyle}>
+                     <div style={quoteStyle}>
+                        "Adam smells like bacon grease and old milk."
+                     </div>
+                     <div style={quoteNameStyle}>
+                        Elizabeth Taylor
+                     </div>
+                     <div style={quoteSourceStyle}>
+                        via Weekly World News
+                     </div>
+                  </div>
                </div>
             </Column>
          </Row>

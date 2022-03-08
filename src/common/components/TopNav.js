@@ -43,7 +43,7 @@ export const TopNav = props => {
 
    const linkStyle = {
       color: the.color.white,
-      fontSize: isMobile ? css3.fontSize.small : css3.fontSize.inherit,
+      fontSize: isMobile ? css3.fontSize.xSmall : css3.fontSize.inherit,
       marginRight: 16,
       textDecoration: css3.textDecoration.none,
    };
@@ -94,6 +94,14 @@ export const TopNav = props => {
             <ListItem button={true}>
                <Link
                   style={mobileLinkStyle}
+                  to={'/home'}
+               >
+                  HOME
+               </Link>
+            </ListItem>
+            <ListItem button={true}>
+               <Link
+                  style={mobileLinkStyle}
                   to={'/novels'}
                >
                   NOVELS
@@ -137,6 +145,14 @@ export const TopNav = props => {
                   to={'/contact'}
                >
                   CONTACT
+               </Link>
+            </ListItem>
+            <ListItem button={true}>
+               <Link
+                  style={mobileLinkStyle}
+                  to={'/worldbuilding'}
+               >
+                  WORLDBUILDING
                </Link>
             </ListItem>
             <ListItem button={true}>
@@ -332,6 +348,12 @@ export const TopNav = props => {
                         to={'/programs'}
                      >
                         PROGRAMS
+                     </Link>
+                     <Link
+                        style={linkStyle}
+                        to={'/worldbuilding'}
+                     >
+                        WORLDBUILDING
                      </Link>
                      <Link
                         style={linkStyle}

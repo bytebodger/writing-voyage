@@ -10,6 +10,7 @@ import { Paintings } from '../../routes/paintings/Paintings';
 import { Plays } from '../../routes/plays/Plays';
 import { Poems } from '../../routes/poems/Poems';
 import { Programs } from '../../routes/programs/Programs';
+import { Worldbuilding } from '../../routes/worldbuilding/Worldbuilding';
 
 export const UI = props => {
    const ElevationScroll = props => {
@@ -79,6 +80,13 @@ export const UI = props => {
             }
             exact={true}
             path={'/programs'}
+         />
+         <Route
+            element={
+               <Worldbuilding/>
+            }
+            exact={true}
+            path={'/worldbuilding'}
          />
          <Route
             element={
