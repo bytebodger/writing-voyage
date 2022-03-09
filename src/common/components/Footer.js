@@ -3,7 +3,7 @@ import { Container } from '@mui/material';
 import { Row, Column } from '@toolz/material-ui/dist/index';
 import { css3 } from '@toolz/css3/src/css3';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faDev as devTo, faFacebookF as facebook, faTwitter as twitter, faInstagram as instagram, faYoutube as youtube } from '@fortawesome/free-brands-svg-icons';
+import { faFacebookF as facebook, faDev as devTo, faTwitter as twitter, faInstagram as instagram, faYoutube as youtube } from '@fortawesome/free-brands-svg-icons';
 import React from 'react';
 import { useViewport } from '@toolz/use-viewport';
 import { materialUiBreakpoints } from '../arrays/material.ui.breakpoints';
@@ -12,6 +12,73 @@ export const Footer = () => {
    const viewport = useViewport(materialUiBreakpoints);
    const isMobile = ['xs', 'sm', 'md'].includes(viewport.size);
 
+   const contactData = [
+      `adam@writing{'\u2024'}voyage`,
+      '904.434.9210',
+      '2512 Dellwood Avenue',
+      'Jacksonville, Florida 32204',
+      'USA',
+   ];
+
+   const getContactData = () => {
+      return contactData.map(data => {
+         return <>
+            <div
+               key={data}
+               style={{fontSize: 14}}
+            >
+               {data}
+            </div>
+         </>;
+      });
+   };
+
+   const getIcons = () => {
+      return icons.map(icon => {
+         return <>
+            <a
+               href={icon.href}
+               key={icon.href}
+               rel={'noreferrer'}
+               target={'_blank'}
+               title={icon.title}
+            >
+               <FontAwesomeIcon
+                  icon={icon.icon}
+                  style={mainStyle}
+               />
+            </a>
+         </>;
+      });
+   };
+
+   const icons = [
+      {
+         href: 'https://dev.to/bytebodger',
+         icon: devTo,
+         title: 'Dev.to',
+      },
+      {
+         href: 'https://www.facebook.com/jaxcreator/',
+         icon: facebook,
+         title: 'Facebook',
+      },
+      {
+         href: 'https://twitter.com/WritingVoyage',
+         icon: twitter,
+         title: 'Twitter',
+      },
+      {
+         href: 'https://www.instagram.com/bytebodger/',
+         icon: instagram,
+         title: 'Instagram',
+      },
+      {
+         href: 'https://www.youtube.com/channel/UCHNDtVFC4WQTcp_awD9c1Ag',
+         icon: youtube,
+         title: 'YouTube',
+      },
+   ];
    const mainStyle = {
       color: the.color.white,
       fontSize: isMobile ? css3.fontSize.small : css3.fontSize.inherit,
@@ -33,61 +100,7 @@ export const Footer = () => {
                      color: the.color.grey,
                      float: css3.float.right,
                   }}>
-                     <a
-                        href={'https://dev.to/bytebodger'}
-                        rel={'noreferrer'}
-                        target={'_blank'}
-                        title={'Dev.to'}
-                     >
-                        <FontAwesomeIcon
-                           icon={devTo}
-                           style={mainStyle}
-                        />
-                     </a>
-                     <a
-                        href={'https://www.facebook.com/jaxcreator'}
-                        rel={'noreferrer'}
-                        target={'_blank'}
-                        title={'Facebook'}
-                     >
-                        <FontAwesomeIcon
-                           icon={facebook}
-                           style={mainStyle}
-                        />
-                     </a>
-                     <a
-                        href={'https://twitter.com/WritingVoyage'}
-                        rel={'noreferrer'}
-                        target={'_blank'}
-                        title={'Twitter'}
-                     >
-                        <FontAwesomeIcon
-                           icon={twitter}
-                           style={mainStyle}
-                        />
-                     </a>
-                     <a
-                        href={'https://www.instagram.com/bytebodger/'}
-                        rel={'noreferrer'}
-                        target={'_blank'}
-                        title={'Instagram'}
-                     >
-                        <FontAwesomeIcon
-                           icon={instagram}
-                           style={mainStyle}
-                        />
-                     </a>
-                     <a
-                        href={'https://www.youtube.com/channel/UCHNDtVFC4WQTcp_awD9c1Ag'}
-                        rel={'noreferrer'}
-                        target={'_blank'}
-                        title={'YouTube'}
-                     >
-                        <FontAwesomeIcon
-                           icon={youtube}
-                           style={mainStyle}
-                        />
-                     </a>
+                     {getIcons()}
                   </div>
                   <div style={{
                      color: the.color.grey,
@@ -99,21 +112,7 @@ export const Footer = () => {
                      }}>
                         Inquiries:*
                      </div>
-                     <div style={{fontSize: 14}}>
-                        adam@writing{'\u2024'}voyage
-                     </div>
-                     <div style={{fontSize: 14}}>
-                        904.434.9210
-                     </div>
-                     <div style={{fontSize: 14}}>
-                        2512 Dellwood Avenue
-                     </div>
-                     <div style={{fontSize: 14}}>
-                        Jacksonville, Florida 32204
-                     </div>
-                     <div style={{fontSize: 14}}>
-                        USA
-                     </div>
+                     {getContactData()}
                   </div>
                   <div style={{
                      clear: css3.clear.both,
@@ -124,9 +123,7 @@ export const Footer = () => {
                   }}>
                      * All inquiries should be accompanied by a healthy portion of beer. None of that cheap shit. Something dark. I'm fancy.
                   </div>
-                  <div style={{
-                     color: the.color.grey,
-                  }}>
+                  <div style={{color: the.color.grey}}>
                      Copyright © {new Date().getFullYear()} ADAM NATHANIEL DAVIS All Rights Reserved
                   </div>
                </Column>
