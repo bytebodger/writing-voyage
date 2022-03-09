@@ -11,6 +11,7 @@ import { Plays } from '../../routes/plays/Plays';
 import { Poems } from '../../routes/poems/Poems';
 import { Programs } from '../../routes/programs/Programs';
 import { Worldbuilding } from '../../routes/worldbuilding/Worldbuilding';
+import { Footer } from './Footer';
 
 export const UI = props => {
    const ElevationScroll = props => {
@@ -95,5 +96,6 @@ export const UI = props => {
             path={'*'}
          />
       </Routes>
+      <Footer/>
    </>;
 };
