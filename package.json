@@ -16,6 +16,7 @@
       "@testing-library/react": "^12.1.2",
       "@testing-library/user-event": "^13.5.0",
       "@toolz/allow-react": "^1.1.3",
+      "@toolz/capitalize": "^1.0.0",
       "@toolz/css3": "^1.0.1",
       "@toolz/material-ui": "^2.0.13",
       "@toolz/use-viewport": "^1.0.1",

@@ -13,7 +13,7 @@ export const Footer = () => {
    const isMobile = ['xs', 'sm', 'md'].includes(viewport.size);
 
    const contactData = [
-      `adam@writing{'\u2024'}voyage`,
+      <>adam@writing{'\u2024'}voyage</>,
       '904.434.9210',
       '2512 Dellwood Avenue',
       'Jacksonville, Florida 32204',
