@@ -3,7 +3,6 @@ import { Close } from '@mui/icons-material';
 import { Container, Hidden, Dialog, Slide, AppBar, Toolbar, IconButton, Typography, List, ListItem } from '@mui/material';
 import { css3 } from '@toolz/css3/src/css3';
 import { faBars as hamburgerMenu } from '@fortawesome/free-solid-svg-icons';
-import { faDev as devTo, faFacebookF as facebook, faTwitter as twitter, faInstagram as instagram, faYoutube as youtube } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
 import { makeStyles } from '@mui/styles';
@@ -11,6 +10,10 @@ import { Row, Column } from '@toolz/material-ui/dist/index';
 import { the } from '../objects/the';
 import { useViewport } from '@toolz/use-viewport';
 import { materialUiBreakpoints } from '../arrays/material.ui.breakpoints';
+import { allow } from '@toolz/allow-react';
+import { is } from '../objects/is';
+import { icons } from '../arrays/icons';
+import { links } from '../arrays/links';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
    return <Slide
@@ -20,9 +23,67 @@ const Transition = React.forwardRef(function Transition(props, ref) {
    />;
 });
 
-export const TopNav = props => {
+export const TopNav = () => {
    const [linksOpen, setLinksOpen] = useState(false);
    const viewport = useViewport(materialUiBreakpoints);
+   const isMobile = ['xs', 'sm', 'md'].includes(viewport.size);
+
+   const getIconLink = (thisIsAMobileMenuLink = false, icon = {}) => {
+      allow.aBoolean(thisIsAMobileMenuLink).anObject(icon);
+      return (
+         <a
+            href={icon.href}
+            key={`aTag-${icon.title}`}
+            rel={'noreferrer'}
+            style={thisIsAMobileMenuLink ? mobileListItemStyle : {}}
+            target={'_blank'}
+            title={icon.title}
+         >
+            <FontAwesomeIcon
+               icon={icon.icon}
+               style={thisIsAMobileMenuLink ? mobileLinkStyle : mainStyle}
+            />
+         </a>
+      );
+   };
+
+   const getLink = (thisIsAMobileMenuLink = false, link = {}) => {
+      allow.aBoolean(thisIsAMobileMenuLink).anObject(link, is.not.empty);
+      return (
+         <Link
+            key={`link-${link.genericName}`}
+            style={thisIsAMobileMenuLink ? mobileLinkStyle : linkStyle}
+            to={link.linkTo}
+         >
+            {link.genericName}
+         </Link>
+      );
+   };
+
+   const getListItems = () => {
+      let listItems = [];
+      links.forEach(link => {
+         listItems.push(
+            <ListItem
+               button={true}
+               key={`listItem-${link.genericName}`}
+            >
+               {getLink(isAMobileMenuLink, link)}
+            </ListItem>,
+         );
+      });
+      icons.forEach(icon => {
+         listItems.push(
+            <ListItem
+               button={true}
+               key={`listItem-${icon.title}`}
+            >
+               {getIconLink(isAMobileMenuLink, icon)}
+            </ListItem>,
+         );
+      });
+      return listItems;
+   };
 
    const getStyles = makeStyles(() => {
       return {
@@ -39,8 +100,11 @@ export const TopNav = props => {
       };
    });
 
-   const isMobile = ['xs', 'sm', 'md'].includes(viewport.size);
+   const getTopIcons = () => icons.map(icon => getIconLink(isNotAMobileMenuLink, icon));
+   const getTopLinks = () => links.map(link => getLink(isNotAMobileMenuLink, link));
 
+   const isAMobileMenuLink = true;
+   const isNotAMobileMenuLink = false;
    const linkStyle = {
       color: the.color.white,
       fontSize: isMobile ? css3.fontSize.xSmall : css3.fontSize.inherit,
@@ -91,140 +155,7 @@ export const TopNav = props => {
             </Toolbar>
          </AppBar>
          <List>
-            <ListItem button={true}>
-               <Link
-                  style={mobileLinkStyle}
-                  to={'/home'}
-               >
-                  HOME
-               </Link>
-            </ListItem>
-            <ListItem button={true}>
-               <Link
-                  style={mobileLinkStyle}
-                  to={'/novels'}
-               >
-                  NOVELS
-               </Link>
-            </ListItem>
-            <ListItem button={true}>
-               <Link
-                  style={mobileLinkStyle}
-                  to={'/paintings'}
-               >
-                  PAINTINGS
-               </Link>
-            </ListItem>
-            <ListItem button={true}>
-               <Link
-                  style={mobileLinkStyle}
-                  to={'/plays'}
-               >
-                  PLAYS
-               </Link>
-            </ListItem>
-            <ListItem button={true}>
-               <Link
-                  style={mobileLinkStyle}
-                  to={'/poems'}
-               >
-                  POEMS
-               </Link>
-            </ListItem>
-            <ListItem button={true}>
-               <Link
-                  style={mobileLinkStyle}
-                  to={'/programs'}
-               >
-                  PROGRAMS
-               </Link>
-            </ListItem>
-            <ListItem button={true}>
-               <Link
-                  style={mobileLinkStyle}
-                  to={'/contact'}
-               >
-                  CONTACT
-               </Link>
-            </ListItem>
-            <ListItem button={true}>
-               <Link
-                  style={mobileLinkStyle}
-                  to={'/worldbuilding'}
-               >
-                  WORLDBUILDING
-               </Link>
-            </ListItem>
-            <ListItem button={true}>
-               <a
-                  href={'https://dev.to/bytebodger'}
-                  rel={'noreferrer'}
-                  style={mobileListItemStyle}
-                  target={'_blank'}
-                  title={'Dev.to'}
-               >
-                  <FontAwesomeIcon
-                     icon={devTo}
-                     style={mobileLinkStyle}
-                  />
-               </a>
-            </ListItem>
-            <ListItem button={true}>
-               <a
-                  href={'https://www.facebook.com/jaxcreator'}
-                  rel={'noreferrer'}
-                  style={mobileListItemStyle}
-                  target={'_blank'}
-                  title={'Facebook'}
-               >
-                  <FontAwesomeIcon
-                     icon={facebook}
-                     style={mobileLinkStyle}
-                  />
-               </a>
-            </ListItem>
-            <ListItem button={true}>
-               <a
-                  href={'https://twitter.com/WritingVoyage'}
-                  rel={'noreferrer'}
-                  style={mobileListItemStyle}
-                  target={'_blank'}
-                  title={'Twitter'}
-               >
-                  <FontAwesomeIcon
-                     icon={twitter}
-                     style={mobileLinkStyle}
-                  />
-               </a>
-            </ListItem>
-            <ListItem button={true}>
-               <a
-                  href={'https://www.instagram.com/bytebodger/'}
-                  rel={'noreferrer'}
-                  style={mobileListItemStyle}
-                  target={'_blank'}
-                  title={'Instagram'}
-               >
-                  <FontAwesomeIcon
-                     icon={instagram}
-                     style={mobileLinkStyle}
-                  />
-               </a>
-            </ListItem>
-            <ListItem button={true}>
-               <a
-                  href={'https://www.youtube.com/channel/UCHNDtVFC4WQTcp_awD9c1Ag'}
-                  rel={'noreferrer'}
-                  style={mobileListItemStyle}
-                  target={'_blank'}
-                  title={'YouTube'}
-               >
-                  <FontAwesomeIcon
-                     icon={youtube}
-                     style={mobileLinkStyle}
-                  />
-               </a>
-            </ListItem>
+            {getListItems()}
          </List>
       </Dialog>
       <Container style={{minWidth: 350}}>
@@ -261,106 +192,11 @@ export const TopNav = props => {
                <Hidden mdDown={true}>
                   <div style={{float: css3.float.right}}>
                      <div style={{float: css3.float.right}}>
-                        <a
-                           href={'https://dev.to/bytebodger'}
-                           rel={'noreferrer'}
-                           target={'_blank'}
-                           title={'Dev.to'}
-                        >
-                           <FontAwesomeIcon
-                              icon={devTo}
-                              style={mainStyle}
-                           />
-                        </a>
-                        <a
-                           href={'https://www.facebook.com/jaxcreator'}
-                           rel={'noreferrer'}
-                           target={'_blank'}
-                           title={'Facebook'}
-                        >
-                           <FontAwesomeIcon
-                              icon={facebook}
-                              style={mainStyle}
-                           />
-                        </a>
-                        <a
-                           href={'https://twitter.com/WritingVoyage'}
-                           rel={'noreferrer'}
-                           target={'_blank'}
-                           title={'Twitter'}
-                        >
-                           <FontAwesomeIcon
-                              icon={twitter}
-                              style={mainStyle}
-                           />
-                        </a>
-                        <a
-                           href={'https://www.instagram.com/bytebodger/'}
-                           rel={'noreferrer'}
-                           target={'_blank'}
-                           title={'Instagram'}
-                        >
-                           <FontAwesomeIcon
-                              icon={instagram}
-                              style={mainStyle}
-                           />
-                        </a>
-                        <a
-                           href={'https://www.youtube.com/channel/UCHNDtVFC4WQTcp_awD9c1Ag'}
-                           rel={'noreferrer'}
-                           target={'_blank'}
-                           title={'YouTube'}
-                        >
-                           <FontAwesomeIcon
-                              icon={youtube}
-                              style={mainStyle}
-                           />
-                        </a>
+                        {getTopIcons(isNotAMobileMenuLink)}
                      </div>
                   </div>
                   <div style={{float: css3.float.right}}>
-                     <Link
-                        style={linkStyle}
-                        to={'/novels'}
-                     >
-                        NOVELS
-                     </Link>
-                     <Link
-                        style={linkStyle}
-                        to={'/paintings'}
-                     >
-                        PAINTINGS
-                     </Link>
-                     <Link
-                        style={linkStyle}
-                        to={'/plays'}
-                     >
-                        PLAYS
-                     </Link>
-                     <Link
-                        style={linkStyle}
-                        to={'/poems'}
-                     >
-                        POEMS
-                     </Link>
-                     <Link
-                        style={linkStyle}
-                        to={'/programs'}
-                     >
-                        PROGRAMS
-                     </Link>
-                     <Link
-                        style={linkStyle}
-                        to={'/worldbuilding'}
-                     >
-                        WORLDBUILDING
-                     </Link>
-                     <Link
-                        style={linkStyle}
-                        to={'/contact'}
-                     >
-                        CONTACT
-                     </Link>
+                     {getTopLinks()}
                   </div>
                </Hidden>
             </Column>

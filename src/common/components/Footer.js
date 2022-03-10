@@ -3,10 +3,10 @@ import { Container } from '@mui/material';
 import { Row, Column } from '@toolz/material-ui/dist/index';
 import { css3 } from '@toolz/css3/src/css3';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFacebookF as facebook, faDev as devTo, faTwitter as twitter, faInstagram as instagram, faYoutube as youtube } from '@fortawesome/free-brands-svg-icons';
 import React from 'react';
 import { useViewport } from '@toolz/use-viewport';
 import { materialUiBreakpoints } from '../arrays/material.ui.breakpoints';
+import { icons } from '../arrays/icons';
 
 export const Footer = () => {
    const viewport = useViewport(materialUiBreakpoints);
@@ -22,23 +22,23 @@ export const Footer = () => {
 
    const getContactData = () => {
       return contactData.map(data => {
-         return <>
+         return (
             <div
-               key={data}
+               key={`contactData-${data}`}
                style={{fontSize: 14}}
             >
                {data}
             </div>
-         </>;
+         );
       });
    };
 
    const getIcons = () => {
       return icons.map(icon => {
-         return <>
+         return (
             <a
                href={icon.href}
-               key={icon.href}
+               key={`bottomIcon-${icon.href}`}
                rel={'noreferrer'}
                target={'_blank'}
                title={icon.title}
@@ -48,37 +48,10 @@ export const Footer = () => {
                   style={mainStyle}
                />
             </a>
-         </>;
+         );
       });
    };
 
-   const icons = [
-      {
-         href: 'https://dev.to/bytebodger',
-         icon: devTo,
-         title: 'Dev.to',
-      },
-      {
-         href: 'https://www.facebook.com/jaxcreator/',
-         icon: facebook,
-         title: 'Facebook',
-      },
-      {
-         href: 'https://twitter.com/WritingVoyage',
-         icon: twitter,
-         title: 'Twitter',
-      },
-      {
-         href: 'https://www.instagram.com/bytebodger/',
-         icon: instagram,
-         title: 'Instagram',
-      },
-      {
-         href: 'https://www.youtube.com/channel/UCHNDtVFC4WQTcp_awD9c1Ag',
-         icon: youtube,
-         title: 'YouTube',
-      },
-   ];
    const mainStyle = {
       color: the.color.white,
       fontSize: isMobile ? css3.fontSize.small : css3.fontSize.inherit,
