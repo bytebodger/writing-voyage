@@ -49,6 +49,8 @@ export const TopNav = () => {
 
    const getLink = (thisIsAMobileMenuLink = false, link = {}) => {
       allow.aBoolean(thisIsAMobileMenuLink).anObject(link, is.not.empty);
+      if (!thisIsAMobileMenuLink && link.genericName === 'HOME')
+         return null;
       return (
          <Link
             key={`link-${link.genericName}`}
