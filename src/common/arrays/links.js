@@ -1,9 +1,9 @@
-import okSierra from '../images/ok-sierra.jpg';
-import cognitiveDissonance from '../images/cognitive-dissonance.png';
-import hilltop from '../images/hilltop.jpg';
-import programming from '../images/programming.png';
 import aDuskForeverWaning from '../images/a-dusk-forever-waning.png';
+import cognitiveDissonance from '../images/cognitive-dissonance.png';
 import excilior from '../images/excilior.png';
+import hilltop from '../images/hilltop.jpg';
+import okSierra from '../images/ok-sierra.jpg';
+import programming from '../images/programming.png';
 
 export const links = [
    {
@@ -51,9 +51,5 @@ export const links = [
       linkTo: '/poems',
       narrative: 'More than thirty poems (and counting) poems compiled into a single volume',
       personalName: 'Poet',
-   },
-   {
-      genericName: 'CONTACT',
-      linkTo: '/contact',
    },
 ];

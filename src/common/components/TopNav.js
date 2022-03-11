@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Close } from '@mui/icons-material';
-import { Container, Hidden, Dialog, Slide, AppBar, Toolbar, IconButton, Typography, List, ListItem } from '@mui/material';
+import { Container, Dialog, Slide, AppBar, Toolbar, IconButton, Typography, List, ListItem } from '@mui/material';
 import { css3 } from '@toolz/css3/src/css3';
 import { faBars as hamburgerMenu } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -26,35 +26,54 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 export const TopNav = () => {
    const [linksOpen, setLinksOpen] = useState(false);
    const viewport = useViewport(materialUiBreakpoints);
-   const isMobile = ['xs', 'sm', 'md'].includes(viewport.size);
+   const isMobile = ['xs', 'sm'].includes(viewport.size);
 
-   const getIconLink = (thisIsAMobileMenuLink = false, icon = {}) => {
-      allow.aBoolean(thisIsAMobileMenuLink).anObject(icon);
+   const getHamburgerMenu = () => {
+      if (!isMobile)
+         return null;
+      return <>
+         <div style={{float: css3.float.right}}>
+            <FontAwesomeIcon
+               icon={hamburgerMenu}
+               onClick={() => setLinksOpen(true)}
+               style={{
+                  color: the.color.white,
+                  cursor: css3.cursor.pointer,
+                  height: 25,
+                  width: 25,
+               }}
+            />
+         </div>
+      </>;
+   };
+
+   const getIconLink = (icon = {}) => {
+      allow.anObject(icon);
       return (
          <a
             href={icon.href}
             key={`aTag-${icon.title}`}
             rel={'noreferrer'}
-            style={thisIsAMobileMenuLink ? mobileListItemStyle : {}}
+            style={isMobile ? mobileListItemStyle : {}}
             target={'_blank'}
             title={icon.title}
          >
             <FontAwesomeIcon
                icon={icon.icon}
-               style={thisIsAMobileMenuLink ? mobileLinkStyle : mainStyle}
+               style={isMobile ? mobileLinkStyle : mainStyle}
             />
          </a>
       );
    };
 
-   const getLink = (thisIsAMobileMenuLink = false, link = {}) => {
-      allow.aBoolean(thisIsAMobileMenuLink).anObject(link, is.not.empty);
-      if (!thisIsAMobileMenuLink && link.genericName === 'HOME')
+   const getLink = (link = {}) => {
+      allow.anObject(link, is.not.empty);
+      if (!isMobile && link.genericName === 'HOME')
          return null;
       return (
          <Link
             key={`link-${link.genericName}`}
-            style={thisIsAMobileMenuLink ? mobileLinkStyle : linkStyle}
+            style={isMobile ? mobileLinkStyle : linkStyle}
             to={link.linkTo}
          >
             {link.genericName}
@@ -70,17 +89,31 @@ export const TopNav = () => {
                button={true}
                key={`listItem-${link.genericName}`}
             >
-               {getLink(isAMobileMenuLink, link)}
+               {getLink(link)}
             </ListItem>,
          );
       });
+      listItems.push(
+         <ListItem
+            button={true}
+            key={`link-contact`}
+         >
+            <a
+               href={'#contact'}
+               style={isMobile ? mobileLinkStyle : linkStyle}
+            >
+               CONTACT
+            </a>
+         </ListItem>,
+      );
       icons.forEach(icon => {
          listItems.push(
             <ListItem
                button={true}
                key={`listItem-${icon.title}`}
+               //style={{textAlign: css3.textAlign.center}}
             >
-               {getIconLink(isAMobileMenuLink, icon)}
+               {getIconLink(icon)}
             </ListItem>,
          );
       });
@@ -102,23 +135,47 @@ export const TopNav = () => {
       };
    });
 
-   const getTopIcons = () => icons.map(icon => getIconLink(isNotAMobileMenuLink, icon));
-   const getTopLinks = () => links.map(link => getLink(isNotAMobileMenuLink, link));
+   const getTopIcons = () => icons.map(icon => getIconLink(icon));
 
-   const isAMobileMenuLink = true;
-   const isNotAMobileMenuLink = false;
+   const getTopIconsAndLinks = () => {
+      if (isMobile)
+         return null;
+      return <>
+         <div style={{float: css3.float.right}}>
+            {getTopIcons()}
+         </div>
+         <div style={{float: css3.float.right}}>
+            {getTopLinks()}
+         </div>
+      </>;
+   };
+
+   const getTopLinks = () => {
+      let topLinks = links.map(link => getLink(link));
+      topLinks.push(
+         <a
+            href={'#contact'}
+            key={`link-contact`}
+            style={isMobile ? mobileLinkStyle : linkStyle}
+         >
+            CONTACT
+         </a>,
+      );
+      return topLinks;
+   };
+
    const linkStyle = {
       color: the.color.white,
-      fontSize: isMobile ? css3.fontSize.xSmall : css3.fontSize.inherit,
+      fontSize: isMobile || viewport.size === 'md' ? css3.fontSize.xSmall : css3.fontSize.inherit,
       marginRight: 16,
       textDecoration: css3.textDecoration.none,
    };
    const mainStyle = {
       color: the.color.white,
       fontSize: isMobile ? css3.fontSize.small : css3.fontSize.inherit,
-      height: isMobile ? 16 : 25,
+      height: isMobile || viewport.size === 'md' ? 16 : 25,
       marginLeft: 8,
-      width: isMobile ? 16 : 25,
+      width: isMobile || viewport.size === 'md' ? 16 : 25,
    };
    const mobileLinkStyle = {
       color: the.color.black,
@@ -160,11 +217,12 @@ export const TopNav = () => {
             {getListItems()}
          </List>
       </Dialog>
-      <Container style={{minWidth: 350}}>
-         <Row style={{
-            paddingLeft: 16,
-            paddingRight: 16,
-         }}>
+      <Container style={{
+         minWidth: 350,
+         paddingLeft: 0,
+         paddingRight: 0,
+      }}>
+         <Row>
             <Column xs={12}>
                <div style={{float: css3.float.left}}>
                   <Link
@@ -178,29 +236,8 @@ export const TopNav = () => {
                      ADAM NATHANIEL DAVIS:
                   </Link>
                </div>
-               <Hidden mdUp={true}>
-                  <div style={{float: css3.float.right}}>
-                     <FontAwesomeIcon
-                        icon={hamburgerMenu}
-                        onClick={() => setLinksOpen(true)}
-                        style={{
-                           color: the.color.white,
-                           height: 25,
-                           width: 25,
-                        }}
-                     />
-                  </div>
-               </Hidden>
-               <Hidden mdDown={true}>
-                  <div style={{float: css3.float.right}}>
-                     <div style={{float: css3.float.right}}>
-                        {getTopIcons(isNotAMobileMenuLink)}
-                     </div>
-                  </div>
-                  <div style={{float: css3.float.right}}>
-                     {getTopLinks()}
-                  </div>
-               </Hidden>
+               {getHamburgerMenu()}
+               {getTopIconsAndLinks()}
             </Column>
          </Row>
       </Container>

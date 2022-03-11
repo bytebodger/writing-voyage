@@ -3,16 +3,16 @@ import elizabethTaylor from '../../common/images/elizabeth-taylor.jpg';
 import ghandi from '../../common/images/ghandi.jpg';
 import popeBenedict from '../../common/images/pope-benedict.jpg';
 import tennesseeWilliams from '../../common/images/tennessee-williams.jpg';
+import { allow } from '@toolz/allow-react';
+import { capitalize } from '@toolz/capitalize';
 import { Container } from '@mui/material';
 import { css3 } from '@toolz/css3/src/css3';
 import { Link } from 'react-router-dom';
+import { links } from '../../common/arrays/links';
 import { materialUiBreakpoints } from '../../common/arrays/material.ui.breakpoints';
 import { Row, Column } from '@toolz/material-ui/dist/index';
 import { the } from '../../common/objects/the';
 import { useViewport } from '@toolz/use-viewport';
-import { links } from '../../common/arrays/links';
-import { allow } from '@toolz/allow-react';
-import { capitalize } from '@toolz/capitalize';
 
 export const Home = () => {
    const viewport = useViewport(materialUiBreakpoints);
@@ -275,13 +275,12 @@ export const Home = () => {
    return <>
       <div style={{backgroundColor: the.color.black}}>
          <Container style={{
-            backgroundImage: adamThePoetJpg,
             minWidth: 350,
+            backgroundImage: `url(${adamThePoetJpg})`,
+            backgroundPositionX: css3.backgroundPosition.left,
+            backgroundRepeat: css3.backgroundRepeat.noRepeat,
          }}>
             <Row style={{
-               backgroundImage: `url(${adamThePoetJpg})`,
-               backgroundPositionX: css3.backgroundPosition.left,
-               backgroundRepeat: css3.backgroundRepeat.noRepeat,
                maxHeight: 370,
                minHeight: 370,
                minWidth: 350,
@@ -311,7 +310,7 @@ export const Home = () => {
             <Column style={{
                ...bodyColumnStyle,
                fontSize: 36,
-               marginTop: 50,
+               marginTop: isMobile ? 20 : 50,
             }}>
                Constantly Creating
             </Column>

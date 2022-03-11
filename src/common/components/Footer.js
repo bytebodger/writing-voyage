@@ -79,10 +79,13 @@ export const Footer = () => {
                      color: the.color.grey,
                      float: css3.float.left,
                   }}>
-                     <div style={{
-                        fontSize: 16,
-                        fontWeight: css3.fontWeight._700,
-                     }}>
+                     <div
+                        id={'contact'}
+                        style={{
+                           fontSize: 16,
+                           fontWeight: css3.fontWeight._700,
+                        }}
+                     >
                         Inquiries:*
                      </div>
                      {getContactData()}
