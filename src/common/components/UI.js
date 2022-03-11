@@ -4,7 +4,6 @@ import { CssBaseline, AppBar, Toolbar, useScrollTrigger } from '@mui/material';
 import React from 'react';
 import { the } from '../objects/the';
 import { TopNav } from './TopNav';
-import { Contact } from '../../routes/contact/Contact';
 import { Novels } from '../../routes/novels/Novels';
 import { Paintings } from '../../routes/paintings/Paintings';
 import { Plays } from '../../routes/plays/Plays';
@@ -33,13 +32,6 @@ export const UI = props => {
       </ElevationScroll>
       <Toolbar/>
       <Routes>
-         <Route
-            element={
-               <Contact/>
-            }
-            exact={true}
-            path={'/contact'}
-         />
          <Route
             element={
                <Home/>
