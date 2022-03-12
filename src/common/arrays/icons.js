@@ -1,4 +1,4 @@
-import { faDev as devTo, faFacebookF as facebook, faTwitter as twitter, faInstagram as instagram, faYoutube as youtube } from '@fortawesome/free-brands-svg-icons';
+import { faDev as devTo, faFacebookF as facebook, faTwitter as twitter, faInstagram as instagram, faYoutubeSquare as youtube } from '@fortawesome/free-brands-svg-icons';
 
 export const icons = [
    {

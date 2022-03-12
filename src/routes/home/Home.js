@@ -62,10 +62,7 @@ export const Home = () => {
    const getQuoteRows = () => {
       return quotes.map((quote, index) => {
          return (
-            <Row
-               key={`quoteRow-${quote.person}`}
-               style={{marginBottom: index === quotes.length - 1 ? 100 : 'inherit'}}
-            >
+            <Row key={`quoteRow-${quote.person}`}>
                <Column
                   xs={5}
                   style={quoteImageStyle}

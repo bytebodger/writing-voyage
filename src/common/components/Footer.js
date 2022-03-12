@@ -63,6 +63,7 @@ export const Footer = () => {
    return <>
       <div style={{
          backgroundColor: the.color.black,
+         marginTop: 100,
          paddingBottom: 40,
          paddingTop: isMobile ? 20 : 40,
       }}>
@@ -99,7 +100,10 @@ export const Footer = () => {
                   }}>
                      * All inquiries should be accompanied by a healthy portion of beer. None of that cheap shit. Something dark. I'm fancy.
                   </div>
-                  <div style={{color: the.color.grey}}>
+                  <div style={{
+                     color: the.color.grey,
+                     fontSize: 12,
+                  }}>
                      Copyright © {new Date().getFullYear()} ADAM NATHANIEL DAVIS All Rights Reserved
                   </div>
                </Column>
