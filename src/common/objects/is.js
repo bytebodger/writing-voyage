@@ -1,6 +1,6 @@
 export const is = Object.freeze({
-   not: {
+   not: Object.freeze({
       empty: 1,
       negative: 0,
-   },
+   }),
 });
