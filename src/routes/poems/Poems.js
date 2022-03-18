@@ -113,6 +113,16 @@ export const Poems = () => {
                   Adam tends to write new poetry in spurts, but if you're on the mailing list, you'll know any time new pieces are posted. If you only have time to browse
                   through a few, be sure to check out <i>Her Disease</i> or <i>Somewhere in Las Vegas</i>. Those are two of his "standards" that are often performed at live
                   events.
+                  <br/><br/>
+                  <iframe
+                     allow={'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'}
+                     allowFullScreen={true}
+                     frameBorder={0}
+                     height={315}
+                     src={'https://www.youtube.com/embed/XWSJKAX-ugE'}
+                     title={'Performing Preacher Man'}
+                     width={isMobile ? 350 : 560}
+                  ></iframe>
                </Column>
             </Row>
          </Row>
