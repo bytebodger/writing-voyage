@@ -1,5 +1,6 @@
 import circlePage from '../../common/images/circle-page.jpg';
 import okSierraDarker from '../../common/images/ok-sierra-darker.jpg';
+import { bodyColumnStyle } from '../../common/css/body.column.style';
 import { Container } from '@mui/material';
 import { css3 } from '@toolz/css3/src/css3';
 import { materialUiBreakpoints } from '../../common/arrays/material.ui.breakpoints';
@@ -10,12 +11,6 @@ import { useViewport } from '@toolz/use-viewport';
 export const Plays = () => {
    const viewport = useViewport(materialUiBreakpoints);
    const isMobile = ['xs', 'sm', 'md'].includes(viewport.size);
-
-   const bodyColumnStyle = {
-      fontFamily: 'Open Sans',
-      textAlign: css3.textAlign.center,
-      width: '100%',
-   };
 
    const getPlays = () => {
       return plays.map(play => {

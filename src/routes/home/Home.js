@@ -13,16 +13,12 @@ import { materialUiBreakpoints } from '../../common/arrays/material.ui.breakpoin
 import { Row, Column } from '@toolz/material-ui/dist/index';
 import { the } from '../../common/objects/the';
 import { useViewport } from '@toolz/use-viewport';
+import { bodyColumnStyle } from '../../common/css/body.column.style';
 
 export const Home = () => {
    const viewport = useViewport(materialUiBreakpoints);
    const isMobile = ['xs', 'sm', 'md'].includes(viewport.size);
 
-   const bodyColumnStyle = {
-      fontFamily: 'Open Sans',
-      textAlign: css3.textAlign.center,
-      width: '100%',
-   };
    const bodyHeadingLinkStyle = {
       color: the.color.black,
       fontFamily: 'Open Sans',

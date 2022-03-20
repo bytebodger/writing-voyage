@@ -325,16 +325,11 @@ import { materialUiBreakpoints } from '../../common/arrays/material.ui.breakpoin
 import { Row, Column } from '@toolz/material-ui/dist/index';
 import { the } from '../../common/objects/the';
 import { useViewport } from '@toolz/use-viewport';
+import { bodyColumnStyle } from '../../common/css/body.column.style';
 
 export const Paintings = () => {
    const viewport = useViewport(materialUiBreakpoints);
    const isMobile = ['xs', 'sm', 'md'].includes(viewport.size);
-
-   const bodyColumnStyle = {
-      fontFamily: 'Open Sans',
-      textAlign: css3.textAlign.center,
-      width: '100%',
-   };
 
    const getCarouselPadding = () => {
       if (['xs', 'sm'].includes(viewport.size))
@@ -798,7 +793,7 @@ export const Paintings = () => {
                         textAlign: css3.textAlign.right,
                         width: isMobile ? '100%' : '90%',
                      }}>
-                        When Adam decided to try his hand at painting in his early 40s, he wasn't content to simply grab a canvas and start dabbling with paint. Rather, he felt
+                        When Adam decided to try his hand at painting in his early 40s, he wasn't content to start simply dabbling with paint. Rather, he felt
                         compelled to create an entirely new technique based on his own experimentation. He uses no paint brushes. Gallons of heavy-body acrylic paint are loaded
                         into squeeze tubes. Those tubes are then used to extrude thousands of individual blobs onto the piece. The result is an extreme impasto effect
                         that he affectionately calls...

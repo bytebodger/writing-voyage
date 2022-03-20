@@ -7,17 +7,12 @@ import { Row, Column } from '@toolz/material-ui/dist/index';
 import { the } from '../../common/objects/the';
 import { useViewport } from '@toolz/use-viewport';
 import { useState } from 'react';
+import { bodyColumnStyle } from '../../common/css/body.column.style';
 
 export const Poems = () => {
    const [expanded, setExpanded] = useState(false);
    const viewport = useViewport(materialUiBreakpoints);
    const isMobile = ['xs', 'sm', 'md'].includes(viewport.size);
-
-   const bodyColumnStyle = {
-      fontFamily: 'Open Sans',
-      textAlign: css3.textAlign.center,
-      width: '100%',
-   };
 
    const expandAndCollapseAccordions = (panel = '') => (event, isExpanded) => {
       setExpanded(isExpanded ? panel : false);
