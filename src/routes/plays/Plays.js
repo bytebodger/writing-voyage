@@ -108,10 +108,10 @@ export const Plays = () => {
    return <>
       <div style={{backgroundColor: the.color.sierraGrey}}>
          <Container style={{
-            minWidth: 350,
             backgroundImage: `url(${okSierraDarker})`,
             backgroundPositionX: css3.backgroundPosition.right,
             backgroundRepeat: css3.backgroundRepeat.noRepeat,
+            minWidth: 350,
          }}>
             <Row style={{
                maxHeight: 370,

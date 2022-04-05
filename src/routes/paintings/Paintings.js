@@ -757,12 +757,12 @@ export const Paintings = () => {
    return <>
       <div style={{backgroundColor: the.color.blue}}>
          <Container style={{
-            minWidth: 350,
             backgroundAttachment: css3.backgroundAttachment.scroll,
             backgroundImage: `url(${hilltop})`,
             backgroundPositionX: css3.backgroundPosition.right,
             backgroundRepeat: css3.backgroundRepeat.noRepeat,
             backgroundSize: css3.backgroundSize.cover,
+            minWidth: 350,
          }}>
             <Row style={{
                maxHeight: 370,

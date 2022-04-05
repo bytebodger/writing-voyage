@@ -34,12 +34,12 @@ export const Poems = () => {
    return <>
       <div style={{backgroundColor: the.color.black}}>
          <Container style={{
-            minWidth: 350,
             backgroundAttachment: css3.backgroundAttachment.scroll,
             backgroundImage: `url(${openMic})`,
             backgroundPositionX: css3.backgroundPosition.right,
             backgroundRepeat: css3.backgroundRepeat.noRepeat,
             backgroundSize: css3.backgroundSize.cover,
+            minWidth: 350,
          }}>
             <Row style={{
                maxHeight: 370,

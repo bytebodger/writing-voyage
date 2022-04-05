@@ -268,10 +268,10 @@ export const Home = () => {
    return <>
       <div style={{backgroundColor: the.color.black}}>
          <Container style={{
-            minWidth: 350,
             backgroundImage: `url(${adamThePoetJpg})`,
             backgroundPositionX: css3.backgroundPosition.left,
             backgroundRepeat: css3.backgroundRepeat.noRepeat,
+            minWidth: 350,
          }}>
             <Row style={{
                maxHeight: 370,
